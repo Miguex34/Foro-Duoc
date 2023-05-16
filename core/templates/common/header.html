@@ -1,0 +1,78 @@
+{% load static %}
+<header style="background-image:url({% static 'img/Maipu.png' %})">
+    <div class="wrap">
+        <h1 id="logo-main">
+            <a href="#">
+                <img src="{% static 'img/Logo_DuocUC.png' %}">
+            </a>
+        </h1>
+        <nav id="menu-principal">
+        <!-- Menu Principal -->
+        <ul id="menu-main-menu" class="menu-main">
+            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-13">
+                <a href="/">Inicio</a>
+            </li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-15">
+                <a href="#">Carreras</a>
+                <ul class="sub-menu">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164">
+                        <a href="#">Escuela de Administración y Negocios</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-167">
+                        <a href="#">Escuela de Salud</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173">
+                        <a href="/programacion/cirugia/">Escuela de Informática y Telecomunicaciones</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161">
+                        <a href="/programacion/pabellon/">Escuela de Ingeniería y Recursos Naturales</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3709">
+                <a href="#">Vida Estudiantil</a>
+                <ul class="sub-menu">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884">
+                        <a href="#">Encuestas de estudiantes</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127">
+                        <a href="#">Eventos para estudiantes</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127">
+                        <a href="#">Reseñas de clases</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3710">
+                <a href="#">Nuestra Sede</a>
+                <ul class="sub-menu">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-138">
+                        <a href="#">Eventos</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-138">
+                        <a href="#">Ultimas noticias</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7568">
+                <a href="#">{{user.nombre}}</a>
+                <ul class="sub-menu">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-182">
+                        <a href="/perfil/">Mi perfil</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185">
+                        <a href="#">Mis cirugías</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-191">
+                        <a href="#">Mis asignaciones</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-190">
+                        <a href="/logout">Cerrar sesión</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>            
+    </nav>
+       <!-- <a href="#" id="menu-movil-trigger">Advertencia, esta página no está hecha para una vista móvil</a> -->
+    </div>
+</header>

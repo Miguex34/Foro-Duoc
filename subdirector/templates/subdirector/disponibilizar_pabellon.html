@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    {% include 'common/head.html' %}
+    <link href="{% static 'css/reserva.css' %}" rel="stylesheet">
+    <style>
+        td {
+            border: 0;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'common/header.html' %}
+    <content>
+        <div id="cajacentral">
+            <table class="mt-5 mb-5">
+                <tr>
+                    <td>
+                        <p class="form-label text-center ms-5 me-5">Tipo:</p>
+                    </td>
+                    <td>
+                        <select name="tipo" id="tipo" class="form-select">
+                            <option value="p">Pabellón</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p class="form-label text-center ms-5 me-5">Numero:</p>
+                    </td>
+                    <td>
+                        <select name="num" id="num" class="form-select">
+                            <option value="1">Pabellón 001</option>
+                            <option value="2">Pabellón 002</option>
+                            <option value="3">Pabellón 003</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p class="form-label text-center ms-5 me-5">Desde:</p>
+                    </td>
+                    <td>
+                        <input type="date" name="" id="" class="form-control">
+                        <input type="time" name="" id="" class="form-control">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p class="form-label text-center ms-5 me-5">Hasta:</p>
+                    </td>
+                    <td>
+                        <input type="date" name="" id="" class="form-control">
+                        <input type="time" name="" id="" class="form-control">
+                    </td>
+                </tr>
+            </table>
+            <button class="btn btn-primary mb-5 mt-2">Disponibilizar</button>
+        </div>
+    </content>
+
+    {% include 'common/footer.html' %}
+    {% include 'common/scripts.html' %}
+</body>
+</html>

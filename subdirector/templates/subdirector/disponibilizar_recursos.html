@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    {% include 'common/head.html' %}
+    <link rel="stylesheet" href="{% static 'css/recursos.css' %}">
+</head>
+<body>
+    {% include 'common/header.html' %}
+
+    <content>
+        <div id="cajacentral">
+            <h2 class="title m-4">Disponibilizar recursos</h2>
+            <table>
+                {% for key, value in recursos.items %}
+                <tr>
+                    <td class="pt-3 pb-3"><p class="nombrerecurso">{{key}}:</p></td>
+                    {% widthratio value 1 -1 as result %}
+                    <td class="pt-3 pb-3"><input class="form-control w-50" type="number" id="cuantity{{forloop.counter}}" min="0" max="{{result|add:"100"}}" counter="{{forloop.counter}}"><small>Actual: {{value}}</small></td>
+                    <td class="pt-3 pb-3"><input class="form-range" type="range" name="{{key}}" id="{{forloop.counter}}" min="0" max="{{result|add:"100"}}" value="0"></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <button class="btn btn-primary m-4" onclick="disponibilizar()">Disponibilizar</button>
+        </div>      
+    </content>
+
+
+    {% include 'common/footer.html' %}
+    {% include 'common/scripts.html' %}
+    <script>
+        $(document).ready(function() {
+            $('.form-range').trigger('change');
+        });
+
+        $('.form-range').change(function() {
+            $('#cuantity' + this.id).val(this.value);
+        });
+
+        $('.form-control').change(function() {
+            $('#' + this.getAttribute('counter')).val(this.value);
+        });
+
+        function disponibilizar() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Disponibilización confirmada',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                location.href = '/';
+            });
+        }
+    </script>
+</body>
+</html>

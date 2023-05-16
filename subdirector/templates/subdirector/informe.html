@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    {% include 'common/head.html' %}
+    <link href="{% static 'css/reserva.css' %}" rel="stylesheet">
+    <style>
+        td {
+            border: 0;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'common/header.html' %}
+    <content>
+        <div id="cajacentral">
+            <table class="mt-5 mb-5">
+                <tr>
+                    <td>
+                        <p class="form-label text-center ms-5 me-5">Especialidad:</p>
+                    </td>
+                    <td>
+                        <select name="tipo" id="tipo" class="form-select me-5 ms-5">
+                            <option value="p">Todas</option>
+                            <option value="p">Otorrinolaringología</option>
+                            <option value="p">Cirugía general</option>
+                            <option value="p">Cardiovascular</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button class="btn btn-primary mb-5 mt-2">Generar informe</button>
+        </div>
+    </content>
+
+    {% include 'common/footer.html' %}
+    {% include 'common/scripts.html' %}
+    <script src="{% static 'js/disponibilizar.js' %}"></script>
+</body>
+</html>

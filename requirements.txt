@@ -1,0 +1,6 @@
+Django
+django-rest-framework
+django-rest-swagger
+requests
+django-cors-headers
+python-dotenv
