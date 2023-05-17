@@ -51,6 +51,29 @@ def login(request):
             except Medico.DoesNotExist:
                 ctx['error'] = True
             return render(request, 'core/login.html', ctx)
+def register(request):
+    ctx = {}
+    ctx['error'] = False
+    if request.method == 'GET':
+        try:
+            username = request.session['username']
+            return redirect('/perfil')
+        except KeyError:
+            return render(request, 'core/register.html', ctx)
+    elif request.method == 'POST':
+        try:
+            username = request.session['username']
+            return redirect('/perfil')
+        except KeyError:
+            correo = request.POST['correo']
+            password = request.POST['password']
+            try:
+                medico = Medico.objects.get(correo=correo, password=password)
+                request.session['username'] = medico.correo
+                return redirect('/perfil')
+            except Medico.DoesNotExist:
+                ctx['error'] = True
+            return render(request, 'core/register.html', ctx)
 
 @medicos_only
 def perfil(request, user=None):

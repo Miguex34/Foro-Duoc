@@ -1,7 +1,8 @@
-# Foro Duoc
+# SSMSO
 ## Descripción
-Web diseñada para un foro enfocado en los estudiantes de Duoc Uc de la sede Maipu.
+Web diseñada para el proceso quirúrgico del servicio de salud metropolitano sur oriente (SSMSO).
 
+A utilizarse como intranet corporativa de los hospitales adheridos al SSMSO.
 
 ## Tecnologías
 ### Backend
