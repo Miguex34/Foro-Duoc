@@ -21,10 +21,17 @@ def medicos_only(function):
             return redirect('/login')
   return wrap
 
+def logeado(request):
+    try:
+        username = request.session['username']
+        return redirect('/inicio')
+    except KeyError:
+        return redirect('/login')
+
 def inicio(request):
     try:
         username = request.session['username']
-        return redirect('/perfil')
+        return redirect('/inicio')
     except KeyError:
         return render(request,'core/inicio.html')
 
@@ -34,20 +41,20 @@ def login(request):
     if request.method == 'GET':
         try:
             username = request.session['username']
-            return redirect('/perfil')
+            return redirect('/inicio')
         except KeyError:
             return render(request, 'core/login.html', ctx)
     elif request.method == 'POST':
         try:
             username = request.session['username']
-            return redirect('/perfil')
+            return redirect('/inicio')
         except KeyError:
             correo = request.POST['correo']
             password = request.POST['password']
             try:
                 medico = Medico.objects.get(correo=correo, password=password)
                 request.session['username'] = medico.correo
-                return redirect('/perfil')
+                return redirect('/inicio')
             except Medico.DoesNotExist:
                 ctx['error'] = True
             return render(request, 'core/login.html', ctx)
@@ -57,20 +64,20 @@ def register(request):
     if request.method == 'GET':
         try:
             username = request.session['username']
-            return redirect('/perfil')
+            return redirect('/inicio')
         except KeyError:
             return render(request, 'core/register.html', ctx)
     elif request.method == 'POST':
         try:
             username = request.session['username']
-            return redirect('/perfil')
+            return redirect('/inicio')
         except KeyError:
             correo = request.POST['correo']
             password = request.POST['password']
             try:
                 medico = Medico.objects.get(correo=correo, password=password)
                 request.session['username'] = medico.correo
-                return redirect('/perfil')
+                return redirect('/inicio')
             except Medico.DoesNotExist:
                 ctx['error'] = True
             return render(request, 'core/register.html', ctx)

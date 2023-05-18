@@ -45,10 +45,32 @@
                 </div>
             </form>
             <footer style="position: relative;bottom: 0;">
-                <a href="#" id="recpass">Recuperar contraseña</a>
+                <a href="#" id="recpass" onclick="alertlogin()">Recuperar contraseña</a>
             </footer>
         </div>
     </div>
     {% include 'common/scripts.html' %}
+    <script>
+        function alertlogin(){
+        Swal.fire({
+                title: 'Olvide mi contraseña',
+                html: `<input type="text" id="correo" class="swal2-input" placeholder="Correo">`,
+                confirmButtonText: 'Enviar',
+                focusConfirm: false,
+                preConfirm: () => {
+                    const login = Swal.getPopup().querySelector('#correo').value
+                    if (!login) {
+                        Swal.showValidationMessage(`Porfavor ingrese su correo`)
+                    }
+                    return { login: login}
+                }
+            }).then((result) => {
+                Swal.fire(`
+    Login: ${result.value.login}
+    Password: ${result.value.password}
+  `.trim())
+            })
+        }
+    </script>
 </body>
 </html>

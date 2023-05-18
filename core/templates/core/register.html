@@ -38,30 +38,35 @@
                 <div>
                     <a href="/login/" id="recpass"style="text-align: left;text-indent: 0%;color: red; display:inline; margin-right:5px">
                         <h5 style="display: inline;">Volver</h5></a>
-                    <input class="btn btn-success" type="submit" value="Registrarse"/>
+                    <button class="btn btn-success" onclick="alertregister()">Registrarse</button>
                 </div>
             </form>
         </div>
     </div>
     {% include 'common/scripts.html' %}
     <script>
+        function alertregister(){
         Swal.fire({
-            title: '<strong>HTML <u>example</u></strong>',
-            icon: 'info',
-            html:
-                'You can use <b>bold text</b>, ' +
-                '<a href="//sweetalert2.github.io">links</a> ' +
-                'and other HTML tags',
-            showCloseButton: true,
-            showCancelButton: true,
-            focusConfirm: false,
-            confirmButtonText:
-                '<i class="fa fa-thumbs-up"></i> Great!',
-            confirmButtonAriaLabel: 'Thumbs up, great!',
-            cancelButtonText:
-                '<i class="fa fa-thumbs-down"></i>',
-            cancelButtonAriaLabel: 'Thumbs down'
-        })
+                title: 'Creacion de cuenta',
+                html: `<input type="text" id="login" class="swal2-input" placeholder="Nombre">
+  <input type="password" id="password" class="swal2-input" placeholder="Contraseña">`,
+                confirmButtonText: 'Confirmar',
+                focusConfirm: false,
+                preConfirm: () => {
+                    const login = Swal.getPopup().querySelector('#login').value
+                    const password = Swal.getPopup().querySelector('#password').value
+                    if (!login || !password) {
+                        Swal.showValidationMessage(`Please enter login and password`)
+                    }
+                    return { login: login, password: password }
+                }
+            }).then((result) => {
+                Swal.fire(`
+    Login: ${result.value.login}
+    Password: ${result.value.password}
+  `.trim())
+            })
+        }
     </script>
 </body>
 </html>
