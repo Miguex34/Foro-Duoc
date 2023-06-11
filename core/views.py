@@ -10,7 +10,7 @@ def estudiantes_only(function):
             correo = request.session['correo']
             try:
                 estudiante = Estudiante.objects.get(correo = correo)
-                return redirect('/forum')
+                return function (request, user = estudiante)
             except Estudiante.DoesNotExist:
                 request.session.flush()
                 redirect('/login')
@@ -26,12 +26,22 @@ def logeado(request):
         return redirect('/login')
     
 @estudiantes_only
-def inicio(request):
-    return render(request,'core/inicio.html')
+def inicio(request,user):
+    ctx = {}
+    ctx['estudiante'] = user
+    return render(request,'core/inicio.html', ctx)
     
 @estudiantes_only
-def forum(request):
-    return render(request,'core/forum.html')
+def forum(request,user):
+    print("paso aqui")
+    ctx = {}
+    ctx['estudiante'] = user
+    publicaciones = Publicacion.objects.all()
+    ctx['publicaciones'] = publicaciones
+    for publicacion in publicaciones:
+        print(publicacion.asunto)
+    return render(request,'core/forum.html', ctx)
+    
 
 def login(request):
     ctx = {}
@@ -44,11 +54,12 @@ def login(request):
             return render(request, 'core/login.html', ctx)
     elif request.method == 'POST':
         try:
-            correo = request.session['correo'][0]
+            correo = request.session['correo']
             return redirect('/forum')
         except KeyError:
-            correo = request.POST['correo']
-            contrasena = request.POST['contrasena']
+            correo = request.POST.get('correo')
+            contrasena = request.POST.get('contrasena')
+            print(correo,contrasena)
             try:
                 estudiante = Estudiante.objects.get(correo=correo, contrasena=contrasena)
                 request.session['correo'] = estudiante.correo

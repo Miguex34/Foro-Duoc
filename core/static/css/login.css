@@ -24,3 +24,30 @@
 #recpass{
     text-decoration: none;
   }
+
+
+.bbox{
+    display: block;
+    padding: 0 0 10px 0 ;
+    background-color: gray;
+    width: 52%;
+
+}
+
+.box{
+    background-color:transparent;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin:  0;
+    flex-direction: column;
+    justify-content: center;
+}
+.table-duoc{
+    background-color: rgba(255, 184, 0, 1);;
+}
+
+.table-descri tr{
+    background-color: lightgray;
+}

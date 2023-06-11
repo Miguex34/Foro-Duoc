@@ -7,21 +7,73 @@
     
 </head>
 <body>
-  <div class="card mb-3 mx-auto" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="..." class="img-fluid rounded-start" alt="...">
+  {% include 'common/header.html' %}
+  
+
+<div class="box">
+  <div class="btnes">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal1" data-bs-whatever="@mdo">Crear</button>
+  </div>
+  <div class="bbox">
+    <table class="table">
+      <thead class="table-duoc">
+        <tr>
+          <th>Nombre asunto</th>
+          <th>Autor</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody class="table-descri">
+        {% for publicacion in publicaciones %}
+        <tr>
+          <td> {{ publicacion.asunto }} </td>
+          <td> {{ publicacion.id_estudiante}} </td>
+          <td> {{ publicacion.fecha}} </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div >
+</div>
+<!-- Modal -->
+<div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Creacion de foro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Titulo:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Asunto:</label>
+            <select name="" id="Tema" class="form-select">
+              <option value="Tema">Selecciona un tema</option>
+              <option value="help">Ayuda con un ramo</option>
+              <option value="talk">hablar sobre la mateira</option>
+          </select>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Descripcion:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Crear</button>
       </div>
     </div>
   </div>
-    
-      {% include 'common/scripts.html' %}
+</div>
+<!-- Modal -->
+
+  {% include 'common/footer.html' %}
+
+  {% include 'common/scripts.html' %}
 </body>
 </html>

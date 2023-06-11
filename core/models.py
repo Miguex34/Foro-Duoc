@@ -41,6 +41,9 @@ class Estudiante(models.Model):
 
     class Meta:
         verbose_name_plural = 'Estudiantes'
+    
+    def __str__(self) -> str:
+        return self.nombre + ' ' + self.apellido_p
 
 class Docente(models.Model):
     id_docente = models.BigAutoField(primary_key=True)
