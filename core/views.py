@@ -33,13 +33,20 @@ def inicio(request,user):
     
 @estudiantes_only
 def forum(request,user):
-    print("paso aqui")
+    if request.method == 'POST':
+        titulo = request.POST.get('titulo')
+        asunto = request.POST.get('asunto')
+        descripcion = request.POST.get('descripcion')
+        publicacion = Publicacion(titulo=titulo,asunto=asunto,descripcion=descripcion,id_estudiante=user)
+        publicacion.save()
+        return redirect('/forum')
     ctx = {}
     ctx['estudiante'] = user
     publicaciones = Publicacion.objects.all()
     ctx['publicaciones'] = publicaciones
-    for publicacion in publicaciones:
-        print(publicacion.asunto)
+    asuntos = Publicacion.OPCIONES_ASUNTO
+    ctx['asuntos'] = asuntos
+    print(asuntos)
     return render(request,'core/forum.html', ctx)
     
 

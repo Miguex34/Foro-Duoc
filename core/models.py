@@ -60,8 +60,15 @@ class Docente(models.Model):
         verbose_name_plural = 'Docentes'
 
 class Publicacion(models.Model):
+    OPCIONES_ASUNTO = [
+        ('ayuda', 'Ayuda en una asignatura'),
+        ('debate', 'Debate sobre una materia'),
+        ('problema', 'Problema en la sede'),
+        ('otros', 'Otros'),
+    ]
     id_publicacion = models.BigAutoField(primary_key=True)
-    asunto = models.CharField(max_length=50)
+    titulo = models.CharField(max_length=50)
+    asunto = models.CharField(max_length=100, choices=OPCIONES_ASUNTO)
     descripcion = models.CharField(max_length=500)
     fecha = models.DateTimeField(default=datetime.datetime.now)
     id_estudiante = models.ForeignKey(Estudiante,on_delete=models.CASCADE)
