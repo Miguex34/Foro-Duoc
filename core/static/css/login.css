@@ -51,3 +51,7 @@
 .table-descri tr{
     background-color: lightgray;
 }
+#comentario_re{
+    width: 100%;
+    resize: none;
+}

@@ -26,7 +26,7 @@
       </thead>
       <tbody class="table-descri">
         {% for publicacion in publicaciones %}
-        <tr>
+        <tr id="{{publicacion.pk}}" onclick="irapublicacion(this)" style="cursor: pointer;">
           <td>{{ publicacion.titulo }}</td>
           <td> {{ publicacion.get_asunto_display}} </td>
           <td> {{ publicacion.id_estudiante}} </td>
@@ -84,6 +84,11 @@
       var form= $('#formpublicacion');
       console.log(form);
       //window.location.reload();
+    }
+
+    function irapublicacion(element) {
+      var id=element.id;
+      window.location.assign('/publicacion/' + id);
     }
   </script>
 </body>

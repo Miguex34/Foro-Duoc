@@ -10,7 +10,7 @@ def estudiantes_only(function):
             correo = request.session['correo']
             try:
                 estudiante = Estudiante.objects.get(correo = correo)
-                return function (request, user = estudiante)
+                return function(request,**kwargs, user = estudiante)
             except Estudiante.DoesNotExist:
                 request.session.flush()
                 redirect('/login')
@@ -46,9 +46,23 @@ def forum(request,user):
     ctx['publicaciones'] = publicaciones
     asuntos = Publicacion.OPCIONES_ASUNTO
     ctx['asuntos'] = asuntos
-    print(asuntos)
     return render(request,'core/forum.html', ctx)
-    
+
+@estudiantes_only
+def publicacion(request,id,user):
+    ctx = {}
+    ctx['estudiante'] = user
+    posteo = Publicacion.objects.get(pk=id)
+    ctx['posteo'] = posteo
+    if request.method == 'POST':
+        texto = request.POST.get('comentario')
+        comentario = Comentario(descripcion=texto,id_estudiante=user,id_publicacion=posteo)
+        comentario.save()
+        return redirect(f'/publicacion/{id}')
+    comentarios=Comentario.objects.filter(id_publicacion=posteo).all()
+    ctx['comentarios'] = comentarios
+    return render(request,'core/publicacion.html', ctx)
+        
 
 def login(request):
     ctx = {}
