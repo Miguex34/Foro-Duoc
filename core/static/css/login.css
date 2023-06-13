@@ -11,7 +11,7 @@
 }
 #caja{
     background-color:dimgrey;
-    opacity: 0.8;
+    opacity: 0.94;
     justify-self: center;
     margin: auto;
     padding: 7%;
@@ -22,7 +22,8 @@
 
 }
 #recpass{
-    text-decoration: none;
+    text-decoration:underline;
+    color: white;
   }
 
 
