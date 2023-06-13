@@ -70,13 +70,13 @@ def login(request):
     if request.method == 'GET':
         try:
             correo = request.session['correo']
-            return redirect('/forum')
+            return redirect('/inicio')
         except KeyError:
             return render(request, 'core/login.html', ctx)
     elif request.method == 'POST':
         try:
             correo = request.session['correo']
-            return redirect('/forum')
+            return redirect('/inicio')
         except KeyError:
             correo = request.POST.get('correo')
             contrasena = request.POST.get('contrasena')
@@ -84,7 +84,7 @@ def login(request):
             try:
                 estudiante = Estudiante.objects.get(correo=correo, contrasena=contrasena)
                 request.session['correo'] = estudiante.correo
-                return redirect('/forum')
+                return redirect('/inicio')
             except Estudiante.DoesNotExist:
                 ctx['error'] = True
             return render(request, 'core/login.html', ctx)
