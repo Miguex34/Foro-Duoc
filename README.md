@@ -1,8 +1,6 @@
 # Foro Duoc sede Maipu
 ## Descripción
-Web diseñada para el proceso quirúrgico del servicio de salud metropolitano sur oriente (SSMSO).
-
-A utilizarse como intranet corporativa de los hospitales adheridos al SSMSO.
+Web diseñada para un foro implementado en Duoc Uc sede Maipu.
 
 ## Tecnologías
 ### Backend
