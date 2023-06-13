@@ -1,4 +1,4 @@
-# SSMSO
+# Foro Duoc sede Maipu
 ## Descripción
 Web diseñada para el proceso quirúrgico del servicio de salud metropolitano sur oriente (SSMSO).
 
