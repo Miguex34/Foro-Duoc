@@ -10,17 +10,21 @@
     justify-content: center;
 }
 #caja{
-    background-color:dimgrey;
+    background-color:#3D2C00;
     opacity: 0.94;
     justify-self: center;
     margin: auto;
     padding: 7%;
-    color: white;
+    color: white    ;
     text-indent: 100px;
     text-align: right;
     border-radius: 6px;
-
 }
+#botoncito{
+    background-color:#E3A300 ;
+    color: white;
+}
+
 #recpass{
     text-decoration:underline;
     color: white;
@@ -56,5 +60,6 @@
     width: 100%;
     resize: none;
 }
+
 
 
