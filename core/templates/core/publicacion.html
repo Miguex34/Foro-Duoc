@@ -109,7 +109,7 @@
   <div class="forum-entry">
     <h2>{{posteo.titulo}}</h2>
     <div class="meta-info">
-      Fecha: <span class="date">{{posteo.fecha}}</span> | Autor: <span class="author">{{posteo.id_estudiante}}</span>
+      Fecha: <span class="date">{{posteo.fecha}}</span> | Autor: <span class="author">{{posteo.id_estudiante}}</span> | Carrera: <span style="text-decoration: none;font-weight: normal;">{{posteo.id_estudiante.id_carrera.get_nombre_carrera_display}}</span>
     </div>
     <p>{{posteo.descripcion}}</p>
     <div class="topic">Tema: <span class="topic-name">{{posteo.get_asunto_display}}</span></div>
@@ -117,7 +117,7 @@
   <div class="comments-container">
     {% for comentario in comentarios %}
       <div class="comment">
-        <div class="name">{{comentario.id_estudiante}}</div>
+        <div class="name">{{comentario.id_estudiante}} <span style="text-decoration: none;font-weight: lighter;">{{comentario.id_estudiante.id_carrera.get_nombre_carrera_display}}</span></div> 
         <div class="Descripcion">{{comentario.descripcion}}</div>
         <div class="date">Fecha del comentario: {{comentario.fecha}}</div>
       </div>

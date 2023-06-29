@@ -28,7 +28,7 @@
         <div id="caja" class="form-group">
             <h1 style="font-size: 32px;">Iniciar sesión</h1>
             {% if error %}
-            <div style="background-color: tomato; color: white; border-radius: 10px; margin-bottom: 1rem;">
+            <div style="background-color: tomato; color: white; border-radius: 10px; margin-bottom: 1rem;" id="mierrorcito">
                 <p class="text-center p-1 m-1">Las credenciales ingresadas no son correctas</p>
             </div>
             {% endif %}
@@ -56,6 +56,7 @@
     </div>
     {% include 'common/scripts.html' %}
     <script>
+        $(document).ready(()=>{setTimeout(()=>{$('#mierrorcito').addClass('d-none')},3000)});
         function alertlogin(){
         Swal.fire({
                 title: 'Olvide mi contraseña',

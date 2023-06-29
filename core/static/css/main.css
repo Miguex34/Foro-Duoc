@@ -22,7 +22,7 @@ a {
   width: 46%;
 }
 .bicolor span.rojo {
-  background: rgba(255, 184, 0, 1);
+  background: #ffb800;
   width: 54%;
 }
 .buscar {

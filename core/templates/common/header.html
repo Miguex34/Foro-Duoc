@@ -1,72 +1,46 @@
 {% load static %}
 <header style="background-image:url({% static 'img/Maipu.png' %})">
-    <div class="wrap">
-        <h1 id="logo-main">
-            <a href="#">
-                <img src="{% static 'img/Logo_DuocUC.png' %}">
-            </a>
-        </h1>
-        <nav id="menu-principal">
-        <!-- Menu Principal -->
-        <ul id="menu-main-menu" class="menu-main">
-            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-13">
-                <a href="/inicio/">Inicio</a>
-            </li>
-            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-15">
-                <a href="#">Carreras</a>
-                <ul class="sub-menu">
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164">
-                        <a href="#">Escuela de Administración y Negocios</a>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-167">
-                        <a href="#">Escuela de Salud</a>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173">
-                        <a href="/programacion/cirugia/">Escuela de Informática y Telecomunicaciones</a>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161">
-                        <a href="/programacion/pabellon/">Escuela de Ingeniería y Recursos Naturales</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3709">
-                <a href="#">Vida Estudiantil</a>
-                <ul class="sub-menu">
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884">
-                        <a href="/forum">General</a>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127">
-                        <a href="#">Eventos para estudiantes</a>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127">
-                        <a href="#">Reseñas de clases</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3710">
-                <a href="#">Nuestra Sede</a>
-                <ul class="sub-menu">
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-138">
-                        <a href="#">Eventos</a>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-138">
-                        <a href="#">Ultimas noticias</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7568">
-                <a href="#">{{estudiante.nombre}} {{estudiante.apellido_p}}</a>
-                <ul class="sub-menu">
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-182">
-                        <a href="#">Mi perfil</a>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-190">
-                        <a href="/logout">Cerrar sesión</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>            
-    </nav>
-       <!-- <a href="#" id="menu-movil-trigger">Advertencia, esta página no está hecha para una vista móvil</a> -->
+     
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top border-1" style="box-shadow: 1px 0px 4px 2px black;">
+    <div class="logoNavbar navbar-brand align-self-center">
+        <a href="/"><img src="{% static 'img/logo_DuocUc.png' %}" class="ms-2 d-inline img-fluid logoNavbar" alt="logo empresa"></a>
+        <!--<a href="#" id="brandAnchor"><h3 class="m-3 d-inline align-self-center">FunnyPet</h3></a>-->
     </div>
+    <div class="me-3">
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPagina" aria-controls="navbarPagina" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarPagina">
+        <ul class="navbar-nav list-group-horizontal-lg text-end mt-0-lg w-100">
+            <li class="nav-item me-0 mt-0 me-lg-0 mt-lg-0">
+                <a href="/" class="nav-link text-start ps-4">Inicio</a>
+            </li>
+        
+            <li class="nav-item dropdown me-0 mt-0 me-lg-0 mt-lg-0">
+                <a href="#" class="nav-link dropdown-toggle text-start ps-4" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Carreras</a>
+
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for carrera in carreras %}
+                        <li><b class="text-center d-block"><a class="dropdown-item" href="/forum/?carrera={{carrera}}" style="text-decoration: none;">&#9658; {{carrera}}</a></b></li>
+                        
+                    
+                    {% endfor %}
+                    <li><b class="text-center d-block"><a class="dropdown-item" href="/forum/" style="text-decoration: none;">&#9658; General </a></b></li>
+                </ul>
+            </li>
+            
+          <li class="nav-item dropdown me-0 mt-0 me-lg-0 mt-lg-0">
+            <a href="#" class="nav-link dropdown-toggle text-start ps-4" id="perfild" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{estudiante.nombre}} {{estudiante.apellido_p}}</a>
+            <ul class="dropdown-menu" aria-labelledby="perfild">
+                <li><b class="text-center d-block"><a class="dropdown-item" href="/logout/" style="text-decoration: none;">Cerrar sesión</a></b></li>
+            </ul>
+        </li>
+            
+        </ul>
+    </div>
+</nav>
+       <!-- <a href="#" id="menu-movil-trigger">Advertencia, esta página no está hecha para una vista móvil</a> -->
+    
 </header>

@@ -14,8 +14,18 @@ class Escuela(models.Model):
     ]
     id_escuela = models.BigAutoField(primary_key=True)
     nombre_escuela = models.CharField(max_length=50,choices = NOMBRES_ESCUELAS)
+    def __str__(self) -> str:
+        return self.get_nombre_escuela_display()
 
 class Carrera(models.Model):
+    carreras_desc = {
+        'Ingeniería en Informática':'ingin',
+        'Ingeniería en Conectividad y Redes':'ingred',
+        'Publicidad':'publ',
+        'Animación Digital':'digt',
+        'Ingeniería en Marketing Digital':'ingmark',
+        'Auditoría':'audi',
+    }
     NOMBRES_CARRERAS = [
         ('ingin','Ingeniería en Informática'),
         ('ingred','Ingeniería en Conectividad y Redes'),
@@ -27,6 +37,8 @@ class Carrera(models.Model):
     id_carrera = models.BigAutoField(primary_key=True)
     nombre_carrera = models.CharField(max_length=50,choices = NOMBRES_CARRERAS)
     id_escuela = models.ForeignKey(Escuela,on_delete=models.CASCADE)
+    def __str__(self) -> str:
+        return self.get_nombre_carrera_display()
 
 class Estudiante(models.Model):
     id_estudiante = models.BigAutoField(primary_key=True)

@@ -43,6 +43,11 @@ def forum(request,user):
     ctx = {}
     ctx['estudiante'] = user
     publicaciones = Publicacion.objects.all()
+    if  'carrera' in request.GET:
+        carrera = request.GET['carrera']
+        filtro = Carrera.objects.get(nombre_carrera = Carrera.carreras_desc[carrera])
+        autores = Estudiante.objects.all().filter(id_carrera = filtro)
+        publicaciones = publicaciones.filter(id_estudiante__in = [autor.pk for autor in autores])
     ctx['publicaciones'] = publicaciones
     asuntos = Publicacion.OPCIONES_ASUNTO
     ctx['asuntos'] = asuntos
@@ -74,16 +79,20 @@ def login(request):
         except KeyError:
             return render(request, 'core/login.html', ctx)
     elif request.method == 'POST':
-        try:
+        
+        if 'correo' in request.session:
             correo = request.session['correo']
+        
             return redirect('/inicio')
-        except KeyError:
+        else:
             correo = request.POST.get('correo')
             contrasena = request.POST.get('contrasena')
             print(correo,contrasena)
             try:
                 estudiante = Estudiante.objects.get(correo=correo, contrasena=contrasena)
+                print('******++********************')
                 request.session['correo'] = estudiante.correo
+                print('******++*')
                 return redirect('/inicio')
             except Estudiante.DoesNotExist:
                 ctx['error'] = True
